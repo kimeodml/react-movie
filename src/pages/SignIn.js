@@ -20,8 +20,8 @@ function SignIn() {
   };
   return (
     <div className="sign">
-      <form>
-        <h2>로그인</h2>
+      <form className="sign-form">
+        <h1 className="sign-title">로그인</h1>
         <div className="sign-group">
           <label className="sign-label">아이디</label>
           <input className="sign-input" type="text" name="id" value={text.id} />
