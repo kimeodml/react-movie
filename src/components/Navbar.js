@@ -4,9 +4,9 @@ function Navbar() {
   return (
     <div className="nav">
       <div className="content_top">
-        <h2>
+        <h1>
           <Link to="/">Logo</Link>
-        </h2>
+        </h1>
         <ul className="userInfo">
           <li>
             <Link to="/login">로그인</Link>
