@@ -24,7 +24,13 @@ function SignIn() {
         <h1 className="sign-title">로그인</h1>
         <div className="sign-group">
           <label className="sign-label">아이디</label>
-          <input className="sign-input" type="text" name="id" value={text.id} />
+          <input
+            className="sign-input"
+            type="text"
+            name="id"
+            value={text.id}
+            onChange={handleChange}
+          />
         </div>
         <div className="sign-group">
           <label className="sign-label">비밀번호</label>
@@ -40,7 +46,7 @@ function SignIn() {
           <label className="sign-label">비밀번호 재확인</label>
           <input
             className="sign-input"
-            type="password2"
+            type="password"
             name="password2"
             value={text.password2}
             onChange={handleChange}
