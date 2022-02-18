@@ -26,3 +26,60 @@ ul {
 .content_bottom {
   display: flex;
 }
+
+/* SignIn */
+.sign {
+  margin: auto;
+  width: 400px;
+  height: 100%;
+  padding: 30px;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid #ecb390;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin-bottom: 40px;
+}
+.sign-title {
+  text-align: center;
+  color: #ecb390;
+}
+.sign-group {
+  box-sizing: border-box;
+  margin-bottom: 30px;
+}
+.sign-label {
+  color: #969292;
+  font-size: 18px;
+}
+.sign-input {
+  font-size: 20px;
+  outline: none;
+  width: 100%;
+  margin-bottom: 0px;
+  border-top-style: none;
+  border-right-style: none;
+  border-left-style: none;
+  font-family: "Jua", sans-serif;
+}
+.sign-btn {
+  width: 330px;
+  margin: 0 auto;
+  display: block;
+  border: none;
+  text-align: center;
+  border-radius: 25px;
+  font-size: 20px;
+  color: white;
+  padding: 10px;
+  transition: all 0.1s;
+  cursor: pointer;
+  background-color: #ff6d6b;
+  font-family: "Jua", sans-serif;
+
+  padding: 10px;
+}
+button:active {
+  transform: translateY(2px);
+}
