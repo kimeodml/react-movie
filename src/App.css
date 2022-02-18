@@ -27,8 +27,8 @@ ul {
   display: flex;
 }
 
-/* SignIn */
-.sign {
+/* Form */
+.contents {
   margin: auto;
   width: 400px;
   height: 100%;
@@ -41,19 +41,19 @@ ul {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   margin-bottom: 40px;
 }
-.sign-title {
+.title {
   text-align: center;
   color: #ecb390;
 }
-.sign-group {
+.group {
   box-sizing: border-box;
   margin-bottom: 30px;
 }
-.sign-label {
+.label {
   color: #969292;
   font-size: 18px;
 }
-.sign-input {
+.input {
   font-size: 20px;
   outline: none;
   width: 100%;
@@ -63,7 +63,7 @@ ul {
   border-left-style: none;
   font-family: "Jua", sans-serif;
 }
-.sign-btn {
+.btn {
   width: 330px;
   margin: 0 auto;
   display: block;
