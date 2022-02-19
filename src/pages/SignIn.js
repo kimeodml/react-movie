@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { SValidation } from "./Validation";
 
 function SignIn() {
   const [text, setText] = useState({
@@ -8,6 +9,8 @@ function SignIn() {
     name: "",
     gender: "default",
   });
+
+  const [errors, setErrors] = useState({});
   const handleChange = (e) => {
     const { name, value } = e.target;
     setText({
@@ -15,8 +18,9 @@ function SignIn() {
       [name]: value,
     });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrors(SValidation(text));
   };
   return (
     <div className="contents">
@@ -31,6 +35,7 @@ function SignIn() {
             value={text.id}
             onChange={handleChange}
           />
+          {errors.id && <p className="error">{errors.id}</p>}
         </div>
         <div className="group">
           <label className="label">비밀번호</label>
@@ -41,6 +46,7 @@ function SignIn() {
             value={text.password}
             onChange={handleChange}
           />
+          {errors.password && <p className="error">{errors.password}</p>}
         </div>
         <div className="group">
           <label className="label">비밀번호 재확인</label>
@@ -51,6 +57,7 @@ function SignIn() {
             value={text.password2}
             onChange={handleChange}
           />
+          {errors.password2 && <p className="error">{errors.password2}</p>}
         </div>
         <div className="group">
           <label className="label">이름</label>
@@ -61,6 +68,7 @@ function SignIn() {
             value={text.name}
             onChange={handleChange}
           />
+          {errors.name && <p className="error">{errors.name}</p>}
         </div>
         <div className="group">
           <label className="label">성별</label>
@@ -76,6 +84,7 @@ function SignIn() {
             <option value="2">여성</option>
             <option value="3">선택안함</option>
           </select>
+          {errors.gender && <p className="error">{errors.gender}</p>}
         </div>
         <button className="btn" type="submit" onClick={handleSubmit}>
           가입하기

@@ -63,6 +63,10 @@ ul {
   border-left-style: none;
   font-family: "Jua", sans-serif;
 }
+.error {
+  color: red;
+  font-size: 13px;
+}
 .btn {
   width: 330px;
   margin: 0 auto;
