@@ -5,9 +5,9 @@ function Navbar() {
   return (
     <div className="nav">
       <div className="content_top">
-        <h1>
+        <span className="title">
           <Link to="/">Logo</Link>
-        </h1>
+        </span>
         <div className="user_info">
           <span className="user_list">
             <Link to="/login">로그인</Link>
@@ -34,7 +34,7 @@ function Navbar() {
           <Link to="/movie/genre/animation">애니메이션</Link>
         </span>
         <span className="nav_list">
-          <Link to="/review">자유 게시판</Link>
+          <Link to="/review">자유게시판</Link>
         </span>
         <span className="search">
           <input type="text" placeholder="검색" />
