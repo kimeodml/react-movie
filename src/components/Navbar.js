@@ -18,17 +18,27 @@ function Navbar() {
         </div>
       </div>
       <div className="content_bottom">
-        <div className="nav-menu">
+        <span className="nav_list">
           <Link to="/movie/genre/rommance">로맨스</Link>
-          <Link to="/movie/genre/document">다큐</Link>
+        </span>
+        <span className="nav_list">
+          <Link to="/movie/genre/document">다큐멘터리</Link>
+        </span>
+        <span className="nav_list">
           <Link to="/movie/genre/musical">뮤지컬</Link>
+        </span>
+        <span className="nav_list">
           <Link to="/movie/genre/musical">뮤지컬</Link>
+        </span>
+        <span className="nav_list">
           <Link to="/movie/genre/animation">애니메이션</Link>
+        </span>
+        <span className="nav_list">
           <Link to="/review">자유 게시판</Link>
-          <span className="search">
-            <input type="text" placeholder="검색" />
-          </span>
-        </div>
+        </span>
+        <span className="search">
+          <input type="text" placeholder="검색" />
+        </span>
       </div>
     </div>
   );
