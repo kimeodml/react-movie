@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { FcSearch } from "react-icons/fc";
 import "./Navbar.css";
 
 function Navbar() {
@@ -37,6 +38,7 @@ function Navbar() {
           <Link to="/review">자유게시판</Link>
         </span>
         <span className="search">
+          <FcSearch className="search_logo" />
           <input type="text" placeholder="검색" />
         </span>
       </div>
