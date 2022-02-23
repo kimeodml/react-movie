@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { FcSearch } from "react-icons/fc";
 import "./Navbar.css";
+import { MovieList } from "../List.js/MovieList";
 
 function Navbar() {
   return (
@@ -19,21 +20,13 @@ function Navbar() {
         </div>
       </div>
       <div className="content_bottom">
-        <span className="nav_list">
-          <Link to="/movie/genre/rommance">로맨스</Link>
-        </span>
-        <span className="nav_list">
-          <Link to="/movie/genre/document">다큐멘터리</Link>
-        </span>
-        <span className="nav_list">
-          <Link to="/movie/genre/musical">뮤지컬</Link>
-        </span>
-        <span className="nav_list">
-          <Link to="/movie/genre/musical">뮤지컬</Link>
-        </span>
-        <span className="nav_list">
-          <Link to="/movie/genre/animation">애니메이션</Link>
-        </span>
+        {MovieList.map((list, index) => {
+          return (
+            <span className="nav_list" key={index}>
+              <Link to={`movie/${list.path}`}>{list.title}</Link>
+            </span>
+          );
+        })}
         <span className="nav_list">
           <Link to="/review">자유게시판</Link>
         </span>
