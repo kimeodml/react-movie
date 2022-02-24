@@ -23,7 +23,7 @@ function Navbar() {
         {MovieList.map((list, index) => {
           return (
             <span className="nav_list" key={index}>
-              <Link to={`movie/${list.path}`}>{list.title}</Link>
+              <Link to={`/movie/${list.path}/1`}>{list.title}</Link>
             </span>
           );
         })}
