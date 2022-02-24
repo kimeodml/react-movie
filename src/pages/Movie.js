@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Loading from "../components/Loading";
+import "./Movie.css";
 
 const list_pages = [1, 2, 3, 4, 5];
 
@@ -11,7 +12,7 @@ function Movie() {
   const getMovies = async () => {
     const json = await (
       await fetch(
-        `https://yts.mx/api/v2/list_movies.json?${genre}&page=${page}&sort_by=year`
+        `https://yts.mx/api/v2/list_movies.json?minimum_rating=8&sort_by=year&${genre}&page=${page}`
       )
     ).json();
     setMovies(json.data.movies);
@@ -22,19 +23,22 @@ function Movie() {
     return;
   }, [genre, page]);
   return (
-    <div className="movies">
-      {loading ? (
-        <Loading />
-      ) : (
-        movies.map((movie) => (
-          <div key={movie.id} className="movie">
-            <img src={movie.medium_cover_image} />
-            <h2>{movie.title}</h2>
-            <p>{movie.summary}</p>
-            {movie.genres && movie.genres.map((g) => <li key={g}>{g}</li>)}
-          </div>
-        ))
-      )}
+    <>
+      <div className="movies">
+        {loading ? (
+          <Loading />
+        ) : (
+          movies.map((movie) => (
+            <div key={movie.id} className="movie">
+              <img src={movie.medium_cover_image} />
+              <h2>{movie.title}</h2>
+              <p>
+                {movie.rating}점 | {movie.year}년 | {movie.runtime}분
+              </p>
+            </div>
+          ))
+        )}
+      </div>
       {loading ? null : (
         <div className="list_pages">
           {list_pages.map((num) => {
@@ -48,7 +52,7 @@ function Movie() {
           })}
         </div>
       )}
-    </div>
+    </>
   );
 }
 
