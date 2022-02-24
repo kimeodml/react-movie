@@ -1,0 +1,36 @@
+img {
+  display: block;
+  width: 150px;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+.movies {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  margin: 0 auto;
+  width: 80%;
+  text-align: center;
+  gap: 50px;
+}
+.movie {
+  border: 3px solid #ecb390;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.list_pages {
+  display: flex;
+  font-size: 24px;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+.list_num {
+  padding: 10px;
+}
+a:focus {
+  color: #ecb390;
+  font-weight: bold;
+}
