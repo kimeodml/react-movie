@@ -2,6 +2,10 @@ a {
   text-decoration: none;
   color: black;
 }
+.nav a:focus {
+  color: #dd4a48;
+  font-weight: bold;
+}
 .nav {
   background-color: #c0d8c0;
   padding: 10px;
