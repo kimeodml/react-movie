@@ -1,0 +1,21 @@
+.movie_detail {
+  width: 50%;
+  border: 3px solid #ecb390;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.detail_title a:hover {
+  color: #ecb390;
+}
+.detail_text1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-sizing: border-box;
+}
+.detail_text2 {
+  text-align: end;
+  padding-right: 10px;
+}
