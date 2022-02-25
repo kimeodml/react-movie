@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Loading from "../components/Loading";
 import "./Movie.css";
+import MovieList from "./MovieList";
+
+// https://yts.mx/api#list_movies
 
 const list_pages = [1, 2, 3, 4, 5];
 
@@ -20,7 +23,6 @@ function Movie() {
   };
   useEffect(() => {
     getMovies();
-    return;
   }, [genre, page]);
   return (
     <>
@@ -29,13 +31,17 @@ function Movie() {
           <Loading />
         ) : (
           movies.map((movie) => (
-            <div key={movie.id} className="movie">
-              <img src={movie.medium_cover_image} />
-              <h2>{movie.title}</h2>
-              <p>
-                {movie.rating}점 | {movie.year}년 | {movie.runtime}분
-              </p>
-            </div>
+            <MovieList
+              key={movie.id}
+              id={movie.id}
+              poster={movie.medium_cover_image}
+              title={movie.title}
+              year={movie.year}
+              runtime={movie.runtime}
+              rating={movie.rating}
+              genre={genre}
+              page={page}
+            />
           ))
         )}
       </div>

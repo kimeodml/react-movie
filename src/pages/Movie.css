@@ -1,4 +1,4 @@
-img {
+.movie img {
   display: block;
   width: 150px;
   height: auto;
@@ -19,6 +19,7 @@ img {
   border-radius: 20px;
   background-color: white;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 5px;
 }
 .list_pages {
   display: flex;
@@ -30,7 +31,7 @@ img {
 .list_num {
   padding: 10px;
 }
-a:focus {
+.list_num a:focus {
   color: #ecb390;
   font-weight: bold;
 }
