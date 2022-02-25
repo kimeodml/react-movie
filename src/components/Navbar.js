@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FcSearch } from "react-icons/fc";
+import { GenreList } from "../GenreList";
 import "./Navbar.css";
-import { MovieList } from "../List.js/MovieList";
 
 function Navbar() {
   return (
@@ -20,7 +20,7 @@ function Navbar() {
         </div>
       </div>
       <div className="content_bottom">
-        {MovieList.map((list, index) => {
+        {GenreList.map((list, index) => {
           return (
             <span className="nav_list" key={index}>
               <Link to={`/movie/${list.path}/1`}>{list.title}</Link>
