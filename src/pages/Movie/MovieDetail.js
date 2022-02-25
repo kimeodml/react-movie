@@ -27,7 +27,7 @@ function MovieDetail() {
           <div className="detail_text1">
             <img src={movie.medium_cover_image} alt={movie.title} />
             <div className="detail_text2">
-              <h1 className="detail_title">
+              <h2 className="detail_title">
                 <a
                   href={`${movie.url}`}
                   className="link"
@@ -36,7 +36,7 @@ function MovieDetail() {
                 >
                   {movie.title}
                 </a>
-              </h1>
+              </h2>
               <p>{movie.rating}점</p>
               <p>{movie.year}년</p>
               <p>{movie.runtime}분</p>
