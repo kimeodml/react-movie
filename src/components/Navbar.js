@@ -1,9 +1,27 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useRef, useState } from "react";
 import { FcSearch } from "react-icons/fc";
 import { GenreList } from "../GenreList";
 import "./Navbar.css";
 
 function Navbar() {
+  let navigate = useNavigate();
+  const [search, setSearch] = useState("");
+  const movieInput = useRef();
+  const searchClick = (e) => {
+    setSearch(e.target.value);
+  };
+  const keyPress = (e) => {
+    if (e.key === "Enter") {
+      if (search.length < 2) {
+        alert("두글자 이상 입력하세요.");
+        movieInput.current.focus();
+        return;
+      }
+      navigate(`/movie/search/${e.target.value}`);
+      e.target.value = "";
+    }
+  };
   return (
     <div className="nav">
       <div className="content_top">
@@ -32,7 +50,16 @@ function Navbar() {
         </span>
         <span className="search">
           <FcSearch className="search_logo" />
-          <input type="text" placeholder="검색" />
+          <input
+            type="text"
+            ref={movieInput}
+            placeholder="검색"
+            onChange={searchClick}
+            onKeyPress={keyPress}
+          />
+          {/* <Link to={`movie/search/${search}`}>
+            <FcSearch className="search_logo" />
+          </Link> */}
         </span>
       </div>
     </div>
