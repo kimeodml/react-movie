@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Home from "./Home";
+import Home from "../Home";
 import { SValidation } from "./Validation";
 
-function SignIn() {
+function SignUp() {
   const [text, setText] = useState({
     id: "",
     password: "",
@@ -103,4 +103,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default SignUp;

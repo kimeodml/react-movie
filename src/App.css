@@ -4,27 +4,7 @@ body {
   margin: 0;
   font-family: "Jua", sans-serif;
   background-color: #f6f6f6;
-  min-height: 100vh;
-  align-items: center;
-}
-ul {
-  list-style: none;
-}
-.nav {
-  background-color: #c0d8c0;
-  padding: 15px;
-  margin-bottom: 20px;
-}
-.content_top {
-  display: flex;
-  justify-content: center;
-}
-.content_top h1 {
-  text-decoration: none;
-  justify-content: flex-start;
-}
-.content_bottom {
-  display: flex;
+  overflow: auto;
 }
 
 /* Form */
@@ -84,6 +64,6 @@ ul {
 
   padding: 10px;
 }
-button:active {
+.btn button:active {
   transform: translateY(2px);
 }

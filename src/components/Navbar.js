@@ -1,50 +1,66 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useRef, useState } from "react";
+import { FcSearch } from "react-icons/fc";
+import { GenreList } from "../GenreList";
+import "./Navbar.css";
 
 function Navbar() {
+  let navigate = useNavigate();
+  const [search, setSearch] = useState("");
+  const movieInput = useRef();
+  const searchClick = (e) => {
+    setSearch(e.target.value);
+  };
+  const keyPress = (e) => {
+    if (e.key === "Enter") {
+      if (search.length < 2) {
+        alert("두글자 이상 입력하세요.");
+        movieInput.current.focus();
+        return;
+      }
+      navigate(`/movie/search/${e.target.value}`);
+      e.target.value = "";
+    }
+  };
   return (
     <div className="nav">
       <div className="content_top">
-        <h1>
+        <span className="title">
           <Link to="/">Logo</Link>
-        </h1>
-        <ul className="userInfo">
-          <li>
+        </span>
+        <div className="user_info">
+          <span className="user_list">
             <Link to="/login">로그인</Link>
-          </li>
-        </ul>
-        <ul>
-          <Link to="/signin">회원가입</Link>
-        </ul>
+          </span>
+          <span className="user_list">
+            <Link to="/signup">회원가입</Link>
+          </span>
+        </div>
       </div>
       <div className="content_bottom">
-        <ul className="nav-menu">
-          <li>
-            <Link to="/rommance">로맨스</Link>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <Link to="/document">다큐</Link>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <Link to="/musical">뮤지컬</Link>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <Link to="/animation">애니메이션</Link>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <Link to="/review">자유 게시판</Link>
-          </li>
-        </ul>
-        <ul>
-          <input type="text" placeholder="검색" />
-        </ul>
+        {GenreList.map((list, index) => {
+          return (
+            <span className="nav_list" key={index}>
+              <Link to={`/movie/${list.path}/1`}>{list.title}</Link>
+            </span>
+          );
+        })}
+        <span className="nav_list">
+          <Link to="/review">자유게시판</Link>
+        </span>
+        <span className="search">
+          <FcSearch className="search_logo" />
+          <input
+            type="text"
+            ref={movieInput}
+            placeholder="검색"
+            onChange={searchClick}
+            onKeyPress={keyPress}
+          />
+          {/* <Link to={`movie/search/${search}`}>
+            <FcSearch className="search_logo" />
+          </Link> */}
+        </span>
       </div>
     </div>
   );

@@ -1,15 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import LogIn from "./pages/LogIn";
-import SignIn from "./pages/SignIn";
-import Home from "./pages/Home";
-import Animation from "./pages/Animation";
-import Document from "./pages/Document";
-import Musical from "./pages/Musical";
-import Review from "./pages/Review";
-import Rommance from "./pages/Rommance";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import LogIn from "./pages/Login/LogIn";
+import SignUp from "./pages/Login/SignUp";
+import Home from "./pages/Home";
+import Review from "./pages/Review";
+import Movie from "./pages/Movie/Movie";
+import MovieDetail from "./pages/Movie/MovieDetail";
+import Search from "./pages/Search";
 
 function App() {
   return (
@@ -18,13 +16,12 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/rommance" element={<Rommance />} />
-          <Route path="/document" element={<Document />} />
-          <Route path="/musical" element={<Musical />} />
-          <Route path="/animation" element={<Animation />} />
+          <Route path="/movie/:genre/:page" element={<Movie />} />
+          <Route path="/movie/:search/:value" element={<Search />} />
+          <Route path="/movie/:genre/:page/:id" element={<MovieDetail />} />
           <Route path="/review" element={<Review />} />
           <Route path="/login" element={<LogIn />} />
-          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </div>
     </Router>
