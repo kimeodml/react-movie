@@ -64,6 +64,6 @@ body {
 
   padding: 10px;
 }
-button:active {
+.btn button:active {
   transform: translateY(2px);
 }
