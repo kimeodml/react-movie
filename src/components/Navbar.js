@@ -18,7 +18,7 @@ function Navbar() {
         movieInput.current.focus();
         return;
       }
-      navigate(`/movie/search/${e.target.value}`);
+      navigate(`/movie/search/${e.target.value}/1`);
       e.target.value = "";
     }
   };
@@ -49,7 +49,6 @@ function Navbar() {
           <Link to="/review">자유게시판</Link>
         </span>
         <span className="search">
-          <FcSearch className="search_logo" />
           <input
             type="text"
             ref={movieInput}
@@ -57,9 +56,9 @@ function Navbar() {
             onChange={searchClick}
             onKeyPress={keyPress}
           />
-          {/* <Link to={`movie/search/${search}`}>
+          <Link to={`movie/search/${search}`}>
             <FcSearch className="search_logo" />
-          </Link> */}
+          </Link>
         </span>
       </div>
     </div>
