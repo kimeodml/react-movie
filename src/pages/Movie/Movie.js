@@ -15,7 +15,7 @@ function Movie() {
   const getMovies = async () => {
     const json = await (
       await fetch(
-        `https://yts.mx/api/v2/list_movies.json?minimum_rating=8&sort_by=year&${genre}&page=${page}`
+        `https://yts.mx/api/v2/list_movies.json?minimum_rating=8&sort_by=year&${genre}&page=${page}&limit=15`
       )
     ).json();
     setMovies(json.data.movies);
@@ -39,8 +39,6 @@ function Movie() {
               year={movie.year}
               runtime={movie.runtime}
               rating={movie.rating}
-              genre={genre}
-              page={page}
             />
           ))
         )}
@@ -49,10 +47,8 @@ function Movie() {
         <div className="list_pages">
           {list_pages.map((num) => {
             return (
-              <span className="list_num">
-                <Link key={num} to={`/movie/${genre}/${num}`}>
-                  {num}
-                </Link>
+              <span key={num} className="list_num">
+                <Link to={`/movie/${genre}/${num}`}>{num}</Link>
               </span>
             );
           })}
