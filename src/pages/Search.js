@@ -30,7 +30,6 @@ function Search() {
             <div key={a.id} className="movie">
               <img src={a.medium_cover_image} alt={a.title} />
               <h2>
-                {/* <Link to={`/movie/search/${search}/${page}`}>{a.title}</Link> */}
                 <Link to={`/movie/detail/${a.id}`}>{a.title}</Link>
               </h2>
               <p>
