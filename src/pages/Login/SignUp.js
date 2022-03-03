@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { authService } from "Fbase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { SignUpInitiate } from "redux/Actions";
 
 function SignUp() {
   let navigate = useNavigate();
@@ -9,8 +9,9 @@ function SignUp() {
     email: "",
     password: "",
   });
-  const [newUser, setNewUser] = useState(true);
   const [error, setError] = useState("");
+  const { currentUser } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setText({
@@ -20,21 +21,14 @@ function SignUp() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      let data;
-      if (newUser) {
-        data = await createUserWithEmailAndPassword(
-          authService,
-          text.email,
-          text.password
-        );
-        alert(`회원가입을 완료했습니다. 로그인 페이지로 이동합니다!`);
-        navigate(`/login`);
-      }
-    } catch (error) {
-      setError(error.message);
-    }
+    dispatch(SignUpInitiate(text.email, text.password));
   };
+  useEffect(() => {
+    if (currentUser) {
+      alert("회원가입을 완료했습니다. 로그인 페이지로 이동합니다!");
+      navigate("/login");
+    }
+  }, [currentUser]);
   return (
     <div className="contents">
       <form className="form">

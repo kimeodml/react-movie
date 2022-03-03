@@ -1,16 +1,16 @@
-import { authService } from "Fbase";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { LoginInitiate } from "redux/Actions";
 
 function LogIn() {
   let navigate = useNavigate();
-  const [newUser, setNewUser] = useState(true);
   const [text, setText] = useState({
     email: "",
     password: "",
   });
-  const [error, setError] = useState("");
+  const { currentUser } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setText({
@@ -21,21 +21,14 @@ function LogIn() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      let data;
-      if (newUser) {
-        data = await signInWithEmailAndPassword(
-          authService,
-          text.email,
-          text.password
-        );
-        alert(`로그인을 완료했습니다.`);
-        navigate(`/`);
-      }
-    } catch (error) {
-      setError(error.message);
-    }
+    dispatch(LoginInitiate(text.email, text.password));
   };
+  useEffect(() => {
+    if (currentUser) {
+      alert("로그인을 완료했습니다!");
+      navigate("/");
+    }
+  }, [currentUser]);
 
   return (
     <div className="contents">
@@ -61,7 +54,6 @@ function LogIn() {
             onChange={handleChange}
           />
         </div>
-        <p className="error">{error}</p>
         <button className="btn" type="submit" onClick={handleSubmit}>
           로그인
         </button>
