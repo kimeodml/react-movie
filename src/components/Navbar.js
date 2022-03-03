@@ -3,6 +3,8 @@ import { useRef, useState } from "react";
 import { FcSearch } from "react-icons/fc";
 import { GenreList } from "../GenreList";
 import "./Navbar.css";
+import Logout from "pages/Login/Logout";
+import { useSelector } from "react-redux";
 
 function Navbar() {
   let navigate = useNavigate();
@@ -22,6 +24,9 @@ function Navbar() {
       e.target.value = "";
     }
   };
+  const { currentUser } = useSelector((state) => state.user);
+  console.log(currentUser);
+
   return (
     <div className="nav">
       <div className="content_top">
@@ -29,12 +34,18 @@ function Navbar() {
           <Link to="/">Logo</Link>
         </span>
         <div className="user_info">
-          <span className="user_list">
-            <Link to="/login">로그인</Link>
-          </span>
-          <span className="user_list">
-            <Link to="/signup">회원가입</Link>
-          </span>
+          {currentUser ? (
+            <Logout />
+          ) : (
+            <>
+              <span className="user_list">
+                <Link to="/login">로그인</Link>
+              </span>
+              <span className="user_list">
+                <Link to="/signup">회원가입</Link>
+              </span>
+            </>
+          )}
         </div>
       </div>
       <div className="content_bottom">
