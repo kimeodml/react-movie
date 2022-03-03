@@ -3,6 +3,8 @@ import { useRef, useState } from "react";
 import { FcSearch } from "react-icons/fc";
 import { GenreList } from "../GenreList";
 import "./Navbar.css";
+import Logout from "pages/Login/Logout";
+import { useSelector } from "react-redux";
 
 function Navbar() {
   let navigate = useNavigate();
@@ -18,10 +20,13 @@ function Navbar() {
         movieInput.current.focus();
         return;
       }
-      navigate(`/movie/search/${e.target.value}`);
+      navigate(`/movie/search/${e.target.value}/1`);
       e.target.value = "";
     }
   };
+  const { currentUser } = useSelector((state) => state.user);
+  console.log(currentUser);
+
   return (
     <div className="nav">
       <div className="content_top">
@@ -29,12 +34,18 @@ function Navbar() {
           <Link to="/">Logo</Link>
         </span>
         <div className="user_info">
-          <span className="user_list">
-            <Link to="/login">로그인</Link>
-          </span>
-          <span className="user_list">
-            <Link to="/signup">회원가입</Link>
-          </span>
+          {currentUser ? (
+            <Logout />
+          ) : (
+            <>
+              <span className="user_list">
+                <Link to="/login">로그인</Link>
+              </span>
+              <span className="user_list">
+                <Link to="/signup">회원가입</Link>
+              </span>
+            </>
+          )}
         </div>
       </div>
       <div className="content_bottom">
@@ -49,7 +60,6 @@ function Navbar() {
           <Link to="/review">자유게시판</Link>
         </span>
         <span className="search">
-          <FcSearch className="search_logo" />
           <input
             type="text"
             ref={movieInput}
@@ -57,9 +67,9 @@ function Navbar() {
             onChange={searchClick}
             onKeyPress={keyPress}
           />
-          {/* <Link to={`movie/search/${search}`}>
+          <Link to={`movie/search/${search}`}>
             <FcSearch className="search_logo" />
-          </Link> */}
+          </Link>
         </span>
       </div>
     </div>

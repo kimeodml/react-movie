@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { LoginInitiate } from "redux/Actions";
 
 function LogIn() {
+  let navigate = useNavigate();
   const [text, setText] = useState({
-    id: "",
+    email: "",
     password: "",
   });
+  const { currentUser } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setText({
@@ -12,9 +18,18 @@ function LogIn() {
       [name]: value,
     });
   };
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch(LoginInitiate(text.email, text.password));
   };
+  useEffect(() => {
+    if (currentUser) {
+      alert("로그인을 완료했습니다!");
+      navigate("/");
+    }
+  }, [currentUser]);
+
   return (
     <div className="contents">
       <form className="form">
@@ -24,8 +39,8 @@ function LogIn() {
           <input
             className="input"
             type="text"
-            name="id"
-            value={text.id}
+            name="email"
+            value={text.email}
             onChange={handleChange}
           />
         </div>
@@ -39,7 +54,6 @@ function LogIn() {
             onChange={handleChange}
           />
         </div>
-
         <button className="btn" type="submit" onClick={handleSubmit}>
           로그인
         </button>
