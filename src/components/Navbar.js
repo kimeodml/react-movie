@@ -5,6 +5,7 @@ import { GenreList } from "../GenreList";
 import "./Navbar.css";
 import Logout from "pages/Login/Logout";
 import { useSelector } from "react-redux";
+import Loading from "./Loading";
 
 function Navbar() {
   let navigate = useNavigate();
@@ -25,7 +26,6 @@ function Navbar() {
     }
   };
   const { currentUser } = useSelector((state) => state.user);
-  console.log(currentUser);
 
   return (
     <div className="nav">
@@ -34,9 +34,8 @@ function Navbar() {
           <Link to="/">Logo</Link>
         </span>
         <div className="user_info">
-          {currentUser ? (
-            <Logout />
-          ) : (
+          {currentUser && <Logout />}
+          {currentUser === null && (
             <>
               <span className="user_list">
                 <Link to="/login">로그인</Link>
@@ -46,6 +45,7 @@ function Navbar() {
               </span>
             </>
           )}
+          {currentUser === undefined && <Loading />}
         </div>
       </div>
       <div className="content_bottom">

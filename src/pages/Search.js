@@ -17,7 +17,6 @@ function Search() {
   };
   useEffect(() => {
     getMoives();
-    console.log(`search: ${search}`);
   }, [search, page]);
 
   return (

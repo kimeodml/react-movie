@@ -2,7 +2,7 @@ import * as types from "./ActionTypes";
 
 const initialState = {
   loading: false,
-  currentUser: null,
+  currentUser: undefined,
   error: null,
 };
 const UserReducer = (state = initialState, action) => {
@@ -26,15 +26,20 @@ const UserReducer = (state = initialState, action) => {
         currentUser: action.payload,
       };
     case types.LOGIN_SUCCESS:
-    case types.LOGOUT_SUCCESS:
       return {
         ...state,
         loading: false,
         currentUser: action.payload,
       };
+    case types.LOGOUT_SUCCESS:
+      return {
+        ...state,
+        currentUser: null,
+      };
     case types.SIGNUP_ERROR:
     case types.LOGIN_ERROR:
     case types.LOGOUT_ERROR:
+      alert(action.payload);
       return {
         ...state,
         loading: false,

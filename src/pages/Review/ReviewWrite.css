@@ -1,0 +1,42 @@
+.review {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 10px;
+  padding-bottom: 20px;
+  border: 3px solid #ecb390;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin-bottom: 50px;
+}
+.review h1 {
+  margin: 10px;
+  margin-bottom: 15px;
+}
+.review input,
+textarea {
+  margin-bottom: 5px;
+  width: 600px;
+  padding: 10px;
+}
+.review textarea {
+  height: 150px;
+  margin-bottom: 10px;
+}
+.review button {
+  width: 330px;
+  border: none;
+  border-radius: 25px;
+  font-size: 20px;
+  color: white;
+  padding: 10px;
+  transition: all 0.1s;
+  cursor: pointer;
+  background-color: #ff6d6b;
+  font-family: "Jua", sans-serif;
+  padding: 10px;
+}
+.review button:active {
+  transform: translateY(2px);
+}

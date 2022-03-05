@@ -1,0 +1,30 @@
+.review_list {
+  width: 90%;
+  margin: 0 auto;
+  padding: 10px;
+  padding-bottom: 20px;
+  border: 3px solid #ecb390;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.review_list h1,
+h3,
+.review_write {
+  text-align: center;
+  margin: 10px;
+}
+.review_write button {
+  border: none;
+  text-align: center;
+  border-radius: 15px;
+  color: white;
+  padding: 10px;
+  transition: all 0.1s;
+  cursor: pointer;
+  background-color: #ff6d6b;
+  font-family: "Jua", sans-serif;
+}
+.review_write button:active {
+  transform: translateY(2px);
+}
