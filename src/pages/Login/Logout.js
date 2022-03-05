@@ -7,7 +7,6 @@ function Logout() {
 
   const handleAuth = async () => {
     if (currentUser) {
-      console.log(currentUser);
       dispatch(LogoutInitiate());
     }
   };

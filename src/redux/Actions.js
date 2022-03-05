@@ -2,7 +2,6 @@ import { authService } from "Fbase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut,
 } from "firebase/auth";
 import * as types from "./ActionTypes";
 
@@ -72,7 +71,6 @@ export const LoginInitiate = (email, password) => {
 export const LogoutInitiate = () => {
   return function (dispatch) {
     dispatch(Logout());
-    console.log(signOut);
     authService
       .signOut()
       .then((res) => dispatch(LogoutSuccess()))
