@@ -4,14 +4,14 @@ import React, { useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import "./ReviewList.css";
 
-function ReviewList({ textObj, isOwner, time }) {
+function ReviewList({ textObj, isOwner, time, email, id }) {
   const { currentUser } = useSelector((state) => state.user);
   const [editing, setEditing] = useState(false);
-  const [newText, setNewText] = useState(
-    textObj.text.title,
-    textObj.text.content
-  );
-  const data = doc(dbService, "texts", `${textObj.id}`);
+  const [newText, setNewText] = useState({
+    newtitle: textObj.title,
+    newcontent: textObj.content,
+  });
+  const data = doc(dbService, "texts", `${id}`);
   const editTitleInput = useRef();
   const editContentInput = useRef();
 
@@ -26,18 +26,24 @@ function ReviewList({ textObj, isOwner, time }) {
   };
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (textObj.text.title < 1) {
+    if (textObj.title.length < 1) {
       editTitleInput.current.focus();
+      alert("제목을 적어주세요");
       return;
     }
-    if (textObj.text.content < 5) {
+    if (textObj.content.length < 5) {
       editContentInput.current.focus();
+      alert("내용은 최소 다섯자 입니다.");
       return;
     }
     alert("글을 수정하였습니다.");
     await updateDoc(data, {
-      text: newText,
+      text: {
+        title: newText.newtitle,
+        content: newText.newcontent,
+      },
     });
+
     setEditing(false);
   };
   const onChange = (e) => {
@@ -50,7 +56,7 @@ function ReviewList({ textObj, isOwner, time }) {
   return (
     <div className="review_item">
       <div className="review_info">
-        작성자: {currentUser.email} | {new Date(time).toLocaleString()}
+        작성자: {email} | {new Date(time).toLocaleString()}
       </div>
       <div className="reveiw_content">
         {editing ? (
@@ -58,13 +64,15 @@ function ReviewList({ textObj, isOwner, time }) {
             <input
               type="text"
               ref={editTitleInput}
-              value={newText}
+              name="newtitle"
+              value={newText.newtitle}
               onChange={onChange}
             />
             <textarea
               ref={editContentInput}
               type="text"
-              value={newText.content}
+              name="newcontent"
+              value={newText.newcontent}
               onChange={onChange}
             />
             <button type="submit" onClick={onSubmit}>
@@ -76,8 +84,8 @@ function ReviewList({ textObj, isOwner, time }) {
           </>
         ) : (
           <>
-            <p className="review_title">{textObj.text.title}</p>
-            <p className="review_text">{textObj.text.content}</p>
+            <p className="review_title">{textObj.title}</p>
+            <p className="review_text">{textObj.content}</p>
             {isOwner && (
               <>
                 <button type="submit" onClick={onDeleteClick}>
