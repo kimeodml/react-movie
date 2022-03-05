@@ -11,5 +11,3 @@ export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 export const LOGOUT_ERROR = "LOGOUT_ERROR";
 
 export const SET_USER = "SET_USER";
-
-export const BUTTON = "BUTTON";
