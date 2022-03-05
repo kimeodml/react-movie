@@ -15,7 +15,7 @@ function MovieDetail() {
     setLoading(false);
   };
   useEffect(() => {
-    getDetails();
+    return getDetails();
   }, [genre, page, id]);
 
   return (
