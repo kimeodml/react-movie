@@ -47,9 +47,11 @@ function Review() {
           {texts.map((text) => (
             <ReviewList
               key={text.id}
-              textObj={text}
+              id={text.id}
+              textObj={text.text}
+              email={text.email}
               time={text.createdAt}
-              isOwner={text.createdId === currentUser.uid}
+              isOwner={text.createdId === currentUser?.uid}
             />
           ))}
         </div>

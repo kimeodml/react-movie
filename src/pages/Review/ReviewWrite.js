@@ -38,6 +38,7 @@ function ReviewWrite() {
       try {
         const data = await addDoc(collection(dbService, "texts"), {
           text,
+          email: currentUser.email,
           createdAt: Date.now(),
           createdId: currentUser.uid,
         });
