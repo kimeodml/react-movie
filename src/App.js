@@ -5,14 +5,15 @@ import Navbar from "./components/Navbar";
 import LogIn from "./pages/Login/LogIn";
 import SignUp from "./pages/Login/SignUp";
 import Home from "./pages/Home";
-import Review from "./pages/Review";
+import Review from "./pages/Review/Review";
 import Movie from "./pages/Movie/Movie";
 import MovieDetail from "./pages/Movie/MovieDetail";
 import Search from "./pages/Search";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { authService } from "Fbase";
-import { Button, SetUser } from "./redux/Actions";
+import { SetUser } from "./redux/Actions";
+import ReviewWrite from "pages/Review/ReviewWrite";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +37,7 @@ function App() {
           <Route path="/movie/search/:search/:page" element={<Search />} />
           <Route path="/movie/detail/:id" element={<MovieDetail />} />
           <Route path="/review" element={<Review />} />
+          <Route path="/review/write" element={<ReviewWrite />} />
           <Route path="/login" element={<LogIn />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>

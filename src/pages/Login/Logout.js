@@ -5,9 +5,8 @@ function Logout() {
   const { currentUser } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
-  const handleAuth = () => {
+  const handleAuth = async () => {
     if (currentUser) {
-      console.log(currentUser);
       dispatch(LogoutInitiate());
     }
   };
